@@ -40,6 +40,13 @@
   color: #61dafb;
 }
 
+.top {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 15px;
+  /* color: rgb(253, 125, 51); */
+}
+
 .item {
   display: flex;
   margin-top: 15px;
@@ -59,7 +66,7 @@
   margin-left: 5px;
   color: #61dafb;
   /* color: #fff633; */
-  font-size: 20px;
+  font-size: 0.8em;
 }
 
 .line {
@@ -69,4 +76,74 @@
   width: 500px;
   height: 2px;
   border-width: 2px;
+}
+
+.textbox {
+  margin-top: 15px;
+  width: 80%;
+  overflow-y: auto;
+  max-height: 200px;
+  font-size: 10px;
+}
+
+h1 {
+  margin-left: 15px;
+  padding-top: 5px;
+}
+
+.question-body {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* font-size: calc(10px + 2vmin); */
+  color: white;
+}
+
+.area {
+  overflow-y: auto;
+  width: 80%;
+  max-height: 80vh;
+  /* max-height: 500px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.question {
+  margin-bottom: 10px;
+}
+
+.description {
+  margin-bottom: 3px;
+}
+
+.radio {
+  margin-left: 15px;
+}
+
+.wrong {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: red;
+}
+
+.correct {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: skyblue;
+}
+
+.score {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.form-control {
+  /* height: 35px; */
+  height: 1.5em;
 }
