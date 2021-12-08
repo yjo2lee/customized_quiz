@@ -7,19 +7,12 @@ import reportWebVitals from "./reportWebVitals";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
-import Questions from "./components/Questions";
-import Grade from "./components/Grade";
-import deeplearningData from "./components/deeplearningData";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} exact></Route>
-        {/* <Route
-          path="/questions"
-          element={<Questions questionData={deeplearningData} />}
-        ></Route> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

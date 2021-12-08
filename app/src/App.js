@@ -8,8 +8,8 @@ import RangeSlider from "react-bootstrap-range-slider";
 import bookIcon from "./image/book.png";
 import NumericInput from "react-numeric-input";
 import Questions from "./components/Questions";
-import deeplearningData from "./components/deeplearningData";
-import iotData from "./components/iotData";
+import deeplearningData from "./data/deeplearningData";
+import iotData from "./data/iotData";
 
 const App = () => {
   const [numQ, setNumQ] = React.useState(5);

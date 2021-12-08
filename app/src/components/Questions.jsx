@@ -6,10 +6,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Grade from "./Grade";
 
 const Questions = ({ questionData, numQ, ratio, level }) => {
-  //   console.log(questionData);
-  const numQuestions = Object.keys(questionData).length;
-  const copiedData = JSON.parse(JSON.stringify(questionData));
-  const [newData, setNewData] = useState(copiedData);
+  const [newData, setNewData] = useState({});
   const [myData, setMyData] = useState({});
   const [graded, setGraded] = useState(false);
   const numSH = Math.floor(((ratio - 1) * numQ) / 4);
@@ -108,21 +105,26 @@ const Questions = ({ questionData, numQ, ratio, level }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const copiedData = JSON.parse(JSON.stringify(myData));
+    setNewData(copiedData);
+  }, [myData]);
+
   const grade = () => {
     setGraded(true);
   };
   const handleChange = (e, key) => {
+    console.log(newData);
     const cand = e.target.value;
     setNewData((newData) => {
       const updated = { ...newData };
       updated[key]["Cand"] = cand;
       return updated;
     });
-    console.log(newData);
   };
 
   return graded ? (
-    <Grade newData={newData} />
+    <Grade myData={newData} />
   ) : (
     <div className="question-body">
       <div className="area">
@@ -135,7 +137,6 @@ const Questions = ({ questionData, numQ, ratio, level }) => {
               <input
                 type="text"
                 placeholder="answer"
-                // onChange={(e) => handleChange(e, myData[key]["Answer"])}
                 onChange={(e) => handleChange(e, key)}
               />
             ) : (
@@ -143,14 +144,14 @@ const Questions = ({ questionData, numQ, ratio, level }) => {
                 <input
                   type="radio"
                   value="true"
-                  name="tf"
+                  // name="tf"
                   onChange={(e) => handleChange(e, key)}
                 />{" "}
                 True
                 <input
                   type="radio"
                   value="false"
-                  name="tf"
+                  // name="tf"
                   className="radio"
                   onChange={(e) => handleChange(e, key)}
                 />{" "}

@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
 
-const Grade = (newData) => {
-  const myData = newData["newData"];
+const Grade = ({ myData }) => {
+  console.log(myData);
   const numQuestions = Object.keys(myData).length;
   const [score, setScore] = useState(0);
 
@@ -37,14 +33,14 @@ const Grade = (newData) => {
                 <input
                   type="radio"
                   value="true"
-                  name="tf"
+                  // name="tf"
                   checked={myData[key]["Cand"] === "true"}
                 />{" "}
                 True
                 <input
                   type="radio"
                   value="false"
-                  name="tf"
+                  // name="tf"
                   className="radio"
                   checked={myData[key]["Cand"] === "false"}
                 />{" "}
