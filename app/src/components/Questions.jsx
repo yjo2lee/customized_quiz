@@ -5,12 +5,108 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Grade from "./Grade";
 
-const Questions = (questionData) => {
+const Questions = ({ questionData, numQ, ratio, level }) => {
   //   console.log(questionData);
-  const myData = questionData["questionData"];
-  const copiedData = JSON.parse(JSON.stringify(myData));
+  const numQuestions = Object.keys(questionData).length;
+  const copiedData = JSON.parse(JSON.stringify(questionData));
   const [newData, setNewData] = useState(copiedData);
+  const [myData, setMyData] = useState({});
   const [graded, setGraded] = useState(false);
+  const numSH = Math.floor(((ratio - 1) * numQ) / 4);
+  const numTF = numQ - numSH;
+  const questionDataEntries = Object.entries(questionData);
+  const question_0_1_arr = questionDataEntries.filter(function ([key, value]) {
+    return value["Type"] === 0 && value["Level"] === 1;
+  });
+  const question_0_2_arr = questionDataEntries.filter(function ([key, value]) {
+    return value["Type"] === 0 && value["Level"] === 2;
+  });
+  const question_0_3_arr = questionDataEntries.filter(function ([key, value]) {
+    return value["Type"] === 0 && value["Level"] === 3;
+  });
+  const question_1_1_arr = questionDataEntries.filter(function ([key, value]) {
+    return value["Type"] === 1 && value["Level"] === 1;
+  });
+  const question_1_2_arr = questionDataEntries.filter(function ([key, value]) {
+    return value["Type"] === 1 && value["Level"] === 2;
+  });
+  const question_1_3_arr = questionDataEntries.filter(function ([key, value]) {
+    return value["Type"] === 1 && value["Level"] === 3;
+  });
+  const question_0_1 = Object.fromEntries(question_0_1_arr);
+  const question_0_2 = Object.fromEntries(question_0_2_arr);
+  const question_0_3 = Object.fromEntries(question_0_3_arr);
+  const question_1_1 = Object.fromEntries(question_1_1_arr);
+  const question_1_2 = Object.fromEntries(question_1_2_arr);
+  const question_1_3 = Object.fromEntries(question_1_3_arr);
+
+  var tf_questions;
+  var sh_questions;
+
+  if (level === 1) {
+    tf_questions = question_0_1;
+    sh_questions = question_1_1;
+  } else if (level === 2) {
+    tf_questions = question_0_2;
+    sh_questions = question_1_2;
+  } else {
+    tf_questions = question_0_3;
+    sh_questions = question_1_3;
+  }
+  useEffect(() => {
+    if (numTF !== 0) {
+      if (Math.floor(Object.keys(tf_questions).length / numTF) === 1) {
+        Object.keys(tf_questions).map((key, idx) => {
+          if (idx < numTF) {
+            setMyData((data) => {
+              const updated = { ...data };
+              updated[key] = questionData[key];
+              return updated;
+            });
+          }
+        });
+      } else {
+        Object.keys(tf_questions).map((key, idx) => {
+          if (
+            (idx + 1) % Math.floor(Object.keys(tf_questions).length / numTF) ===
+            0
+          ) {
+            setMyData((data) => {
+              const updated = { ...data };
+              updated[key] = questionData[key];
+              return updated;
+            });
+          }
+        });
+      }
+    }
+    if (numSH !== 0) {
+      if (Math.floor(Object.keys(sh_questions).length / numSH) === 1) {
+        Object.keys(sh_questions).map((key, idx) => {
+          if (idx < numSH) {
+            setMyData((data) => {
+              const updated = { ...data };
+              updated[key] = questionData[key];
+              return updated;
+            });
+          }
+        });
+      } else {
+        Object.keys(sh_questions).map((key, idx) => {
+          if (
+            (idx + 1) % Math.floor(Object.keys(sh_questions).length / numSH) ===
+            0
+          ) {
+            setMyData((data) => {
+              const updated = { ...data };
+              updated[key] = questionData[key];
+              return updated;
+            });
+          }
+        });
+      }
+    }
+  }, []);
 
   const grade = () => {
     setGraded(true);

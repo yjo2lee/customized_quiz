@@ -6,7 +6,6 @@ import FormControl from "react-bootstrap/FormControl";
 
 const Grade = (newData) => {
   const myData = newData["newData"];
-  console.log(myData);
   const numQuestions = Object.keys(myData).length;
   const [score, setScore] = useState(0);
 
@@ -15,7 +14,6 @@ const Grade = (newData) => {
       if (myData[key]["Answer"] === myData[key]["Cand"]) {
         setScore(score + 1);
       }
-      console.log(myData[key]["Cand"]);
     });
   }, []);
 

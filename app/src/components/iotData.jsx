@@ -1,4 +1,4 @@
-export const deeplearningData = {
+export const iotData = {
   1: {
     Question: "What is 1+1?",
     Answer: "2",
@@ -77,4 +77,4 @@ export const deeplearningData = {
   },
 };
 
-export default deeplearningData;
+export default iotData;
