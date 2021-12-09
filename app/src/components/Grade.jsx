@@ -24,7 +24,7 @@ const Grade = ({ myData }) => {
             {myData[key]["Answer"] === myData[key]["Cand"] ? (
               <div className="correct">Correct!</div>
             ) : (
-              <div className="wrong">Please try it again.</div>
+              <div className="wrong">{myData[key]["Answer"]}</div>
             )}
             {myData[key]["Type"] === 1 ? ( // short-answer questions
               <input type="text" placeholder={myData[key]["Cand"]} />

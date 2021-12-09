@@ -40,17 +40,23 @@ const Questions = ({ questionData, numQ, ratio, level }) => {
   var tf_questions;
   var sh_questions;
 
-  if (level === 1) {
-    tf_questions = question_0_1;
-    sh_questions = question_1_1;
-  } else if (level === 2) {
-    tf_questions = question_0_2;
-    sh_questions = question_1_2;
-  } else {
-    tf_questions = question_0_3;
-    sh_questions = question_1_3;
-  }
   useEffect(() => {
+    if (level == 1) {
+      console.log("a");
+      tf_questions = question_0_1;
+      sh_questions = question_1_1;
+    } else if (level == 2) {
+      console.log("b");
+      tf_questions = question_0_2;
+      sh_questions = question_1_2;
+    } else {
+      console.log("c");
+      tf_questions = question_0_3;
+      sh_questions = question_1_3;
+    }
+    console.log(question_0_3);
+    console.log(tf_questions);
+
     if (numTF !== 0) {
       if (Math.floor(Object.keys(tf_questions).length / numTF) === 1) {
         Object.keys(tf_questions).map((key, idx) => {
@@ -106,6 +112,7 @@ const Questions = ({ questionData, numQ, ratio, level }) => {
   }, []);
 
   useEffect(() => {
+    // console.log(myData);
     const copiedData = JSON.parse(JSON.stringify(myData));
     setNewData(copiedData);
   }, [myData]);
