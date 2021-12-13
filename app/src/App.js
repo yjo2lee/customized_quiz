@@ -60,7 +60,7 @@ const App = () => {
 
             <Dropdown.Menu>
               <Dropdown.Item onClick={chooseLectureDL}>
-                Artificial Intelligence
+                Deep Learning
               </Dropdown.Item>
               <Dropdown.Item onClick={chooseLectureIoT}>
                 Internet of Things
