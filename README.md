@@ -36,12 +36,19 @@ Our project generates customized quiz (QA sets) that asks about concepts and rel
 navigate to `app/` and run `npm install`, `npm start`
 
 ## How to run the ptuning model
+
 navigate to `model/` and run `deepspeed --num_gpus=1 vidkn.py`
 
+## P-tuning model
+
+https://drive.google.com/file/d/1XRz-8cHOm9ONTE_jj68fqkXpBwzBl4Y7/view?usp=sharing
+
 ## How to test the ptuning model
+
 navigate to `model/` and run `deepspeed --num_gpus=1 vidkn_test.py`
 
 ## How to run the baseline model
+
 navigate to `model/` and run `python baseline.py`
 
 ## Application screenshot
